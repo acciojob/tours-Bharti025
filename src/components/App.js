@@ -18,6 +18,11 @@ const App = () => {
     })
     },[]);
 
+     const removeTour=(index)=>{
+       const newTours= tours.filter(tour=>tour.id!==index)
+       setTours(newTours);
+    }
+
 if (loading) {
     return (
       <main id="main">
@@ -28,7 +33,8 @@ if (loading) {
 
     return(
       <main id="main">
-        <Tours tours={tours}/>
+        {!tours && <p>No tours left</p>}
+        <Tours tours={tours} removeTour={removeTour}/>
       </main>
     )
 }
